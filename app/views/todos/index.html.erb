@@ -1,0 +1,12 @@
+<h1>Todos for <%= @category.name %></h1>
+<%= link_to 'New Todo', new_category_todo_path(@category) %>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= todo.name %> - <%= todo.completed? ? 'Completed' : 'Not Completed' %>
+      <%= link_to 'Edit', edit_category_todo_path(@category, todo) %>
+      <%= link_to 'Delete', category_todo_path(@category, todo), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
